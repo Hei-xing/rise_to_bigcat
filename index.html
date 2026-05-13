@@ -194,7 +194,7 @@ body::before{
   backdrop-filter:blur(10px);
   padding:14px 16px;
   display:flex;align-items:center;gap:12px;
-  cursor:pointer;position:relative;overflow:hidden;
+  cursor:default;position:relative;overflow:hidden;
   transition:background .2s;
 }
 .code-card::before{
@@ -284,7 +284,7 @@ body::before{
   position:absolute;top:16px;right:16px;
   background:none;border:1px solid rgba(255,68,170,0.3);
   color:var(--dim);font-size:13px;
-  width:30px;height:30px;cursor:pointer;
+  width:30px;height:30px;cursor:default;
   display:flex;align-items:center;justify-content:center;
   font-family:'Share Tech Mono',monospace;
   transition:border-color .2s,color .2s;
@@ -488,31 +488,31 @@ body::before{
 </div>
 
 <div class="codes">
-  <div class="code-card" onclick="openModal('000')">
+  <div class="code-card">
     <div class="code-num-block"><span class="code-num">CODE</span><span class="code-num-id">000</span></div>
     <div class="code-body"><div class="code-label">変身</div><div class="code-kanji">TRANSFORMATION</div><div class="code-desc">セカンド衣装導入 — 新たな姿が、加わる。</div></div>
   </div>
-  <div class="code-card" onclick="openModal('001')">
+  <div class="code-card">
     <div class="code-num-block"><span class="code-num">CODE</span><span class="code-num-id">001</span></div>
     <div class="code-body"><div class="code-label">拡張</div><div class="code-kanji">EXPANSION</div><div class="code-desc">新グッズ発売 — 群のシンボルを纏え。</div></div>
   </div>
-  <div class="code-card" onclick="openModal('002')">
+  <div class="code-card">
     <div class="code-num-block"><span class="code-num">CODE</span><span class="code-num-id">002</span></div>
     <div class="code-body"><div class="code-label">遭遇</div><div class="code-kanji">ENCOUNTER</div><div class="code-desc">CITYROCK 開催 — 街に熱が解き放たれる。</div></div>
   </div>
-  <div class="code-card" onclick="openModal('003')">
+  <div class="code-card">
     <div class="code-num-block"><span class="code-num">CODE</span><span class="code-num-id">003</span></div>
     <div class="code-body"><div class="code-label">衝突</div><div class="code-kanji">COLLISION</div><div class="code-desc">3DAYS ツーマン企画 『RUN IT』</div></div>
   </div>
-  <div class="code-card" onclick="openModal('004')">
+  <div class="code-card">
     <div class="code-num-block"><span class="code-num">CODE</span><span class="code-num-id">004</span></div>
     <div class="code-body"><div class="code-label">集結</div><div class="code-kanji">CONVERGENCE</div><div class="code-desc">3DAYS ワンマン企画 『SYNC』</div></div>
   </div>
-  <div class="code-card" onclick="openModal('005')">
+  <div class="code-card">
     <div class="code-num-block"><span class="code-num">CODE</span><span class="code-num-id">005</span></div>
     <div class="code-body"><div class="code-label">加速</div><div class="code-kanji">ACCELERATION</div><div class="code-desc">6月5週連続シングルリリース — L<span class="omega-char">Ω</span>PARA渾身の五連撃。</div></div>
   </div>
-  <div class="code-card omega" onclick="openModal('omega')">
+  <div class="code-card omega">
     <div class="code-num-block"><span class="code-num">CODE</span><span class="code-num-id"><span class="omega-char">Ω</span></span></div>
     <div class="code-body"><div class="code-label">突破</div><div class="code-kanji">BREAKTHROUGH — 2周年記念ワンマンライブ in BIGCAT</div><div class="code-desc">誓いの場所へ、遂に辿り着く日。壁の向こうで待っているのは、BIGCATのステージだ。</div></div>
   </div>

@@ -534,7 +534,7 @@ body::before{
     <div class="secret-file-list">
       <div class="secret-file" onclick="openSecret(0)" style="cursor:pointer;">
         <div class="secret-lock">🔒</div>
-        <div class="secret-fname">α — ????????????.wav</div>
+        <div class="secret-fname">α — 最新SE音源.wav</div>
         <div class="secret-tag">LOCKED</div>
       </div>
       <div class="secret-file" onclick="openSecret(1)" style="cursor:pointer;">
@@ -556,6 +556,7 @@ body::before{
     <div class="secret-statusbar"><span>4 items — ACCESS DENIED</span><span class="secret-blink">_</span></div>
   </div>
 </div>
+
 
 <!-- SECRET PASSWORD MODAL -->
 <div class="modal-overlay" id="secret-overlay" onclick="closeSecret()">
@@ -715,8 +716,9 @@ const CODES={
 
 
 // ── SECRET FILES ──
+
 const SECRET_FILES = [
-  { password: '1223', label: 'α — SECRET_FILE.wav', num: 'α' },
+  { password: '0250', label: 'α — SECRET_FILE.wav', num: 'α' },
   { password: '????', label: 'β — SECRET_FILE.wav', num: 'β' },
   { password: '????', label: 'γ — SECRET_FILE.wav', num: 'γ' },
   { password: '????', label: 'Ω — SECRET_FILE.wav', num: 'Ω' },
@@ -737,7 +739,9 @@ function openSecret(index) {
 function checkSecret() {
   const input = document.getElementById('secret-pw-input').value;
   const file = SECRET_FILES[currentSecretIndex];
+  if (!file) return;
   if (input === file.password) {
+    const unlockedFile = file; // closeSecret前に保存
     closeSecret();
     // アンロック演出
     const overlay = document.createElement('div');
@@ -781,7 +785,7 @@ function checkSecret() {
         barEl.style.boxShadow = '0 0 20px #fff';
         setTimeout(() => {
           overlay.remove();
-          const f = SECRET_FILES[currentSecretIndex];
+          const f = unlockedFile;
           document.getElementById('modal-code-num').innerHTML = '🔓 SECRET FILE ' + f.num;
           document.getElementById('modal-title').innerHTML = 'UNLOCKED';
           document.getElementById('modal-sub').innerHTML = 'ACCESS GRANTED';
@@ -791,16 +795,24 @@ function checkSecret() {
 > FILE INTEGRITY: OK<br>
 > LOADING CONTENT....
 </div>
-<div style="border:1px solid rgba(0,255,136,0.2);padding:20px;text-align:center;">
-  <div style="font-size:28px;margin-bottom:12px;">🎵</div>
+<div style="border:1px solid rgba(0,255,136,0.2);padding:12px 16px;text-align:center;">
+  <div style="font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:4px;color:#00ff88;margin-bottom:0;">L<span class="omega-char">Ω</span>PARA SE音源</div>
   <div style="font-family:'Orbitron',monospace;font-size:13px;letter-spacing:3px;color:#00ff88;margin-bottom:8px;">${f.label}</div>
-  <div style="font-size:13px;color:rgba(255,255,255,0.4);line-height:1.9;letter-spacing:1px;">コンテンツは近日公開予定...<br>もう少し待っててね。</div>
+</div>
+<div style="border:1px solid rgba(0,255,136,0.2);padding:16px;margin-top:14px;">
+  <div style="font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:5px;color:#00ff88;margin-bottom:10px;">DOWNLOAD URL</div>
+  <div style="font-size:10px;color:rgba(255,255,255,0.4);letter-spacing:1px;word-break:break-all;margin-bottom:12px;line-height:1.6;">https://51.gigafile.nu/0917-be989cbda33bb45d938f5068a12945e1b</div>
+  <button onclick="const u='https://51.gigafile.nu/0917-be989cbda33bb45d938f5068a12945e1b';navigator.clipboard.writeText(u).then(()=>{this.textContent='COPIED !';this.style.borderColor='#00ff88';this.style.color='#00ff88';setTimeout(()=>{this.textContent='COPY URL';this.style.borderColor='rgba(255,255,255,0.25)';this.style.color='#fff';},2000);});event.stopPropagation();"
+    style="width:100%;padding:10px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.25);color:#fff;font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:6px;cursor:pointer;transition:all 0.2s;">COPY URL</button>
+  <div style="font-size:11px;color:rgba(255,255,255,0.35);margin-top:12px;line-height:1.8;letter-spacing:1px;">ギガファイル便のアプリをダウンロードいただき、<br>上記URLをペーストしてください。</div>
 </div>
 <div style="font-family:'Share Tech Mono',monospace;font-size:9px;letter-spacing:2px;color:rgba(0,255,136,0.3);margin-top:14px;line-height:1.8;">
   ENCRYPTED BY LOPARA_SYSTEM v2.0<br>
   NEXT FILE UNLOCKS: COMING SOON_
 </div>`;
           document.getElementById('modal-overlay').classList.add('open');
+
+
           const box = document.querySelector('.modal-box');
           box.style.background = '#000';
           box.style.borderColor = 'rgba(0,255,136,0.4)';
@@ -847,6 +859,7 @@ function openModal(code){
 function closeModal(){
   document.getElementById('modal-overlay').classList.remove('open');
   document.body.style.overflow='';
+
   const box = document.querySelector('.modal-box');
   box.style.background = '';
   box.style.borderColor = '';
